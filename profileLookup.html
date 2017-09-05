@@ -1,0 +1,75 @@
+<html>
+
+<body>
+<p id="demo"></p>
+
+<script>
+
+//Setup
+var contacts = [
+    {
+        "firstName": "Akira",
+        "lastName": "Laine",
+        "number": "0543236543",
+        "likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "firstName": "Harry",
+        "lastName": "Potter",
+        "number": "0994372684",
+        "likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "firstName": "Sherlock",
+        "lastName": "Holmes",
+        "number": "0487345643",
+        "likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "firstName": "Kristian",
+        "lastName": "Vos",
+        "number": "unknown",
+        "likes": ["Javascript", "Gaming", "Foxes"]
+    }
+];
+
+
+function lookUpProfile(firstName, prop){
+// Only change code below this line
+var found=false;
+var contactIndex;
+ // suche ob Firstname in der Liste
+ for(var j = 0; j < contacts.length; j++) {
+   if(contacts[j].firstName==firstName){
+     found=true;
+     contactIndex=j;
+   }
+   else if(j==contacts.length-1 && found===false)
+     return "No such contact";
+     
+ }
+ //suche ob Objekt mit Firstname gewünschte prop hat
+  if(found===true){    
+   if(contacts[contactIndex].hasOwnProperty(prop)){
+        return contacts[contactIndex][prop];
+   }else
+        return"No such property";
+  }   
+/*  
+ for (var i = 0; i < contacts.length; i++) { 
+  if(contacts[i].firstName==firstName && contacts[i].hasOwnProperty(prop)){
+        found=true;
+        return contacts[i][prop];
+    }
+ }
+*/
+// Only change code above this line
+}
+
+// Change these values to test your function
+lookUpProfile("Kristian", "lastName");
+
+
+</script>
+</body>
+</html>

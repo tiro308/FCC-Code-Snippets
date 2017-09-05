@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Display IP Address</title>
+</head>
+ 
+<body>
+<h3>html teil geladen!</h3>
+<p id="demo">default</p>
+ 
+  <script>
+//cross origin Error Lösung: https://crossorigin.me/
+
+//Async Html Request
+var xhr = new XMLHttpRequest();
+xhr.open('GET', "https://crossorigin.me/http://ipinfo.io/json", true);
+xhr.send();
+xhr.addEventListener("readystatechange", processRequest, false);
+
+xhr.onreadystatechange = processRequest;
+ 
+//eventhandler
+function processRequest(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        //document.getElementById("para1")
+        document.getElementById("demo").innerHTML = "deine IP: " + response.ip;
+    }
+}
+//Ende Async Html Request
+
+  </script>
+</body>
+ 
+</html>

@@ -1,0 +1,49 @@
+<html>
+
+<body>
+<p id="demo"></p>
+
+<script>
+//objekt ohne constructor mode
+function createBike(gear, speed){
+	var bike={};
+	bike.gear=gear;
+  bike.speed=speed;
+	return bike;
+}
+//objekt mit constructor mode
+function ConstructorBike(gear, speed){ //soll großbuchstabe beginnen
+	this.gear=gear;
+  this.speed=speed;
+  this.increaseGear= function(){ //kann ein anderes this haben als seine constructor proto function
+    this.gear+=3;
+    console.log(this);
+  };
+}
+
+function Mechanic(name){
+  this.name=name;
+}
+
+var objBike={ //soll großbuchstabe beginnen
+	tires:3,
+	speed:1
+}
+
+console.log(bi=new ConstructorBike(1,24));
+//bi.increaseGear();
+var mike=new Mechanic("Mike");
+mike.increaseGear= bi.increaseGear;
+mike.increaseGear.call(bi);//mit call wird das this der inneren function an das callende obj gebunden
+console.log(bi.increaseGear);
+/*
+console.log(b= createBike(12,20));
+console.log(bi=new ConstructorBike(4,24));
+console.log(Object.getPrototypeOf(b));
+//von Objekten ableiten
+var tricicle=Object.create(objBike);
+console.log(tricicle.tires);
+*/
+</script>
+</body>
+</html>

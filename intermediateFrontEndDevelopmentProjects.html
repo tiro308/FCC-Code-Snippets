@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid" style="background-color: #eee;width:300px">
+    <div class="text-center" style="font-size: 18px; color: blue">
+      <h2 onclick="fn()">Cat Photo are so cute</h2>
+      <p id="txt"> hey there, this is madness!</p>
+      <button id="butt" onclick="httpGet()"> Button </button>
+    </div>
+  </div>
+
+  <script>
+                                //  var xhttp = new XMLHttpRequest();
+                                //  xhttp.open("GET", "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=en", true);
+                                //  xhttp.send();
+
+                                 //  var xhr = new XMLHttpRequest();
+                                 //  xhr.open("GET", "https://www.codecademy.com/", false);
+                                 //  // Add your code below!
+                                 //  xhr.send();
+                                 //  console.log(xhr.status);
+                                 //  console.log(xhr.stausText);
+                                 //  function fn() {
+                                 //    document.getElementById("txt").innerHTML = "asdfasdfasdfasdfasdfasdf";
+                                 //    alert("hello");
+                                 //  }
+                                 //  $("p").append("heheheheheheh");
+
+                                 (function () {
+                                   // your page initialization code here
+                                   // the DOM will be available here
+                                   //statt $document ready
+                                   httpGet();
+                                 })();
+
+                                 function httpGet() {
+                                   var xmlHttp = new XMLHttpRequest();
+                                  //  xmlHttp.open("GET", 'https://crossorigin.me/http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', false); // false for synchronous request
+                                   xmlHttp.open("GET", 'https://crossorigin.me/http://boerse.ard.de/aktien/index.html', false); // false for synchronous request
+                                   xmlHttp.send();
+                                   //console.log(xmlHttp.responseText);
+                                   //console.log(typeof xmlHttp.response);
+                                   document.getElementById("txt").innerHTML = xmlHttp.responseText.substring(16,xmlHttp.responseText.indexOf('",'));
+                                   $("#txt").html(xmlHttp.responseText);
+                                   //$("#quoteAuthor").html("- " + data.quoteAuthor);
+                                   return xmlHttp.responseText;
+                                 }
+  </script>
+</body>
+
+</html>
